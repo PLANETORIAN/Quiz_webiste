@@ -41,17 +41,25 @@ const qstns = [
     }
 ];
 
-const qstnElement = document.querySelector(".question");
-const ansElement = document.querySelector(".answers");
-const nextElement = document.querySelector(".next-button");
 let qIndex = 0;
 let score = 0;
+scorePer=(score/(qstns.length+1))*100;
 
 
 function qstnShow(){
     let currQstn = document.querySelector(".quiz");
     if (qIndex >= qstns.length) {
-        currQstn.innerHTML = "<h1>Quiz Completed!</h1>";
+        currQstn.innerHTML = `
+        <div class="pie-container">
+    <div class="circular">
+        <span class="circular-progress"></span>
+    </div>
+    <span class="text">sjldj</span>
+</div> <!-- No extra </div> needed -->
+`;
+
+        let circular = document.querySelector(".circular"); 
+        circular.style.background = `conic-gradient(#7d2ae8 ${scorePer*3.6}deg, white 0deg)`
         return;
     }
     
@@ -66,14 +74,33 @@ function qstnShow(){
 
     document.querySelectorAll(".ans").forEach((ansButton)=>{
         ansButton.addEventListener("click",()=>{
+
+
+            document.querySelectorAll(".ans").forEach(btn => {
+                btn.disabled = true;  
+                btn.style.opacity = "0.8";  
+            });
+
+            
+
+
             if (ansButton.innerHTML===qstns[qIndex].correctAns){
                 
                 score++;
+                ansButton.style.borderColor = "green";  
+                ansButton.style.borderWidth = "3px"; 
+                ansButton.style.borderStyle = "solid";
+                scorePer=(score/(qstns.length+1))*100;
                 
             }
             else{
+
+                ansButton.style.borderColor = "red";  
+                ansButton.style.borderWidth = "3px"; 
+                ansButton.style.borderStyle = "solid";
                 
             }
+
         })
     })
 }
@@ -85,3 +112,21 @@ nextButton.addEventListener("click", () => {
     qIndex++;
     qstnShow();
 });
+
+
+
+// let endscore = document.querySelector(".circular");
+// let scoreText = document.querySelector(".circular-progress");
+
+// let scoreIntial = 0;
+// let scoreFinal = 0;
+
+// let progress = setInterval(()=>{
+//     scoreIntial++;
+//     scoreText.textContent = `${scoreIntial}%`
+
+//     if(scoreIntial==scoreFinal){
+//         clearInterval(progress);
+//     }
+// },100)
+
