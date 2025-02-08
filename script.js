@@ -109,7 +109,7 @@ function qstnShow(){
 `;
 
         let circular = document.querySelector(".circular"); 
-        circular.style.background = `conic-gradient(#7d2ae8 ${scorePer*3.6}deg, white 0deg)`
+        circular.style.background = `conic-gradient(#33a1ff ${scorePer*3.6}deg, white 0deg)`
 
         let tryAgain = document.querySelector(".next-button");
         tryAgain.innerHTML="Try Again";

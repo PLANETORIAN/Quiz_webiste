@@ -87,13 +87,13 @@ body{
     height: 170px;
     width: 170px;
     border-radius: 50%;
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffff;
 
 }
 
 .circular-progress{
     position: relative;
-    font-size: 50px;
+    font-size: 40px;
     font-weight: 600;
     color: #555558;
 }
