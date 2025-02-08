@@ -43,7 +43,7 @@ const qstns = [
 
 let qIndex = 0;
 let score = 0;
-scorePer=(score/(qstns.length+1))*100;
+scorePer=(score/(qstns.length))*100;
 
 
 function qstnShow(){
@@ -52,18 +52,39 @@ function qstnShow(){
         currQstn.innerHTML = `
         <div class="pie-container">
     <div class="circular">
-        <span class="circular-progress"></span>
+        <span class="circular-progress">${scorePer}%</span>
     </div>
-    <span class="text">sjldj</span>
-</div> <!-- No extra </div> needed -->
+    <span class="text">You got ${score} correct out of ${qstns.length}</span>
+</div>
 `;
 
         let circular = document.querySelector(".circular"); 
         circular.style.background = `conic-gradient(#7d2ae8 ${scorePer*3.6}deg, white 0deg)`
+
+        let tryAgain = document.querySelector(".next-button");
+        tryAgain.innerHTML="Try Again";
+        tryAgain.addEventListener("click",()=>{
+            qIndex=0;
+            score=0;
+            scorePer=0;
+            
+            tryAgain.innerHTML="Next";
+            qstnShow();
+            
+
+            // this replaces the next button with a clone of itslef as the previous event listeners are still attached to it.
+            nextButton.replaceWith(nextButton.cloneNode(true)); 
+            nextButton = document.querySelector(".next-button"); 
+            nextButton.addEventListener("click", () => {
+                qIndex++;
+                qstnShow();
+    })
+
+        });
         return;
     }
     
-    currQstn.innerHTML="";
+  
     currQstn.innerHTML = `<h1>${qstns[qIndex].question}</h1>
             <div class="answers">
                 <button class="ans">${qstns[qIndex].ans.opt1}</button>
@@ -90,7 +111,7 @@ function qstnShow(){
                 ansButton.style.borderColor = "green";  
                 ansButton.style.borderWidth = "3px"; 
                 ansButton.style.borderStyle = "solid";
-                scorePer=(score/(qstns.length+1))*100;
+                scorePer=(score/(qstns.length))*100;
                 
             }
             else{
@@ -112,21 +133,4 @@ nextButton.addEventListener("click", () => {
     qIndex++;
     qstnShow();
 });
-
-
-
-// let endscore = document.querySelector(".circular");
-// let scoreText = document.querySelector(".circular-progress");
-
-// let scoreIntial = 0;
-// let scoreFinal = 0;
-
-// let progress = setInterval(()=>{
-//     scoreIntial++;
-//     scoreText.textContent = `${scoreIntial}%`
-
-//     if(scoreIntial==scoreFinal){
-//         clearInterval(progress);
-//     }
-// },100)
 
