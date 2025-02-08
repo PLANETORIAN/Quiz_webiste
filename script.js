@@ -52,6 +52,7 @@ scorePer=0;
 let mainContainer = document.querySelector(".container");
 let startQuiz = document.querySelector(".start-btn");
 startQuiz.addEventListener("click",()=>{
+
     mainContainer.innerHTML=`<h1 class="quiz-head">QUIZ</h1>
         <div class="quiz"></div>
         <div class="btns">
@@ -59,8 +60,22 @@ startQuiz.addEventListener("click",()=>{
         </div>`;
 
     qstnShow();
+
     NextButton();
 });
+
+function NextButton() {
+    let nextButton = document.querySelector(".next-button");
+
+    let newButton = nextButton.cloneNode(true);
+    nextButton.replaceWith(newButton);
+    nextButton = newButton;
+
+    nextButton.addEventListener("click", () => {
+        qIndex++;
+        qstnShow(); 
+    });
+}
 
 
 
@@ -82,27 +97,22 @@ function qstnShow(){
 
         let tryAgain = document.querySelector(".next-button");
         tryAgain.innerHTML="Try Again";
+
+        let newTryAgain = tryAgain.cloneNode(true);
+tryAgain.replaceWith(newTryAgain);
+tryAgain = newTryAgain;
+
+        
         tryAgain.addEventListener("click",()=>{
             qIndex=0;
             score=0;
             scorePer=0;
             qstnShow();
             
-            tryAgain.innerHTML="Next";
-            // qstnShow();
-            
-
-            // this replaces the next button with a clone of itslef as the previous event listeners are still attached to it.
-            // nextButton.replaceWith(nextButton.cloneNode(true)); 
-            // nextButton = document.querySelector(".next-button"); 
-            // nextButton.addEventListener("click", () => {
-            //     qIndex++;
-            //     qstnShow();
-
-            NextButton();
-    })
-
-        ;
+            let nextButton = document.querySelector(".next-button");
+        nextButton.innerHTML = "Next"; 
+        NextButton();
+    });
         return;
     }
     
@@ -135,7 +145,7 @@ function qstnShow(){
                 ansButton.style.borderStyle = "solid";
                 ansButton.style.backgroundColor = "#9ce69c";
 
-                // scorePer=(score/(qstns.length))*100;
+
                 
             }
             else{
@@ -148,17 +158,11 @@ function qstnShow(){
             }
 
         })
+        
     })
+    NextButton();
 }
 
-function NextButton(){
-    let nextButton=document.querySelector(".next-button")
-    nextButton.addEventListener("click", () => {
-    qIndex++;
-    qstnShow();
-    });
 
-    
-};
-NextButton();
 
+ 
