@@ -1,44 +1,60 @@
 const qstns = [
     {
-        question: "What is the capital city of Australia?",
+        question: "Which Pixar movie is about a rat who becomes a chef in Paris?",
         ans: {
-            opt1: "Sydney",
-            opt2: "Melbourne",
-            opt3: "Canberra",
-            opt4: "Brisbane"
+            opt1: "Finding Nemo",
+            opt2: "Ratatouille",
+            opt3: "The Incredibles",
+            opt4: "WALL-E"
         },
-        correctAns: "Canberra"
+        correctAns: "Ratatouille"
     },
-    {
-        question: "What is the largest ocean on Earth?",
+    {question:"Which DC movie features the character Harley Quinn for the first time?",
         ans: {
-            opt1: "Atlantic Ocean",
-            opt2: "Indian Ocean",
-            opt3: "Arctic Ocean",
-            opt4: "Pacific Ocean"
+            opt1:"The Suicide Squad",
+            opt2:"Birds of Prey",
+            opt3:"Suicide Squad (2016)",
+            opt4:"The Batman",     
         },
-        correctAns: "Pacific Ocean"
+        correctAns: "Suicide Squad (2016)"
     },
-    {
-        question: "Which planet is known as the Red Planet?",
+    {question:"What is the name of the villain in The Lion King?",
         ans: {
-            opt1: "Venus",
-            opt2: "Mars",
-            opt3: "Jupiter",
-            opt4: "Saturn"
+            opt1:"Mufasa",
+            opt2:"Scar",
+            opt3:"Shere Khan",
+            opt4:"Jafar",     
         },
-        correctAns: "Mars"
+        correctAns: "Scar"
     },
-    {
-        question: "Who developed the theory of relativity?",
+    {question:"Who directed the sci-fi film Inception (2010)?",
         ans: {
-            opt1: "Isaac Newton",
-            opt2: "Albert Einstein",
-            opt3: "Nikola Tesla",
-            opt4: "Stephen Hawking"
+            opt1:"Steven Spielberg",
+            opt2:"Christopher Nolan",
+            opt3:"James Cameron",
+            opt4:"Ridley Scott",     
         },
-        correctAns: "Albert Einstein"
-    }
+        correctAns: "Christopher Nolan"
+    },
+    {question:"Which actor played the Joker in The Dark Knight (2008)?",
+        ans: {
+            opt1:"Jack Nicholson",
+            opt2:"Jared Leto",
+            opt3:"Heath Ledger",
+            opt4:"Joaquin Phoenix",     
+        },
+        correctAns: "Heath Ledger"
+    },
+    {question:`Which movie features the line, “I'm the king of the world!”?`,
+        ans: {
+            opt1:"Titanic",
+            opt2:"Avatar",
+            opt3:"The Wolf of Wall Street",
+            opt4:"Gladiator",     
+        },
+        correctAns: "Titanic"
+    },
+    
 ];
 
 let qIndex = 0;
@@ -82,7 +98,7 @@ function NextButton() {
 function qstnShow(){
     let currQstn = document.querySelector(".quiz");
     if (qIndex >= qstns.length) {
-        scorePer=(score/qstns.length)*100;
+        scorePer=((score/qstns.length)*100).toFixed(2);
         currQstn.innerHTML = `
         <div class="pie-container">
     <div class="circular">
