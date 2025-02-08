@@ -43,12 +43,31 @@ const qstns = [
 
 let qIndex = 0;
 let score = 0;
-scorePer=(score/(qstns.length))*100;
+scorePer=0;
+
+
+
+
+
+let mainContainer = document.querySelector(".container");
+let startQuiz = document.querySelector(".start-btn");
+startQuiz.addEventListener("click",()=>{
+    mainContainer.innerHTML=`<h1 class="quiz-head">QUIZ</h1>
+        <div class="quiz"></div>
+        <div class="btns">
+            <button class="next-button bt">Next</button>
+        </div>`;
+
+    qstnShow();
+    NextButton();
+});
+
 
 
 function qstnShow(){
     let currQstn = document.querySelector(".quiz");
     if (qIndex >= qstns.length) {
+        scorePer=(score/qstns.length)*100;
         currQstn.innerHTML = `
         <div class="pie-container">
     <div class="circular">
@@ -67,25 +86,28 @@ function qstnShow(){
             qIndex=0;
             score=0;
             scorePer=0;
+            qstnShow();
             
             tryAgain.innerHTML="Next";
-            qstnShow();
+            // qstnShow();
             
 
             // this replaces the next button with a clone of itslef as the previous event listeners are still attached to it.
-            nextButton.replaceWith(nextButton.cloneNode(true)); 
-            nextButton = document.querySelector(".next-button"); 
-            nextButton.addEventListener("click", () => {
-                qIndex++;
-                qstnShow();
+            // nextButton.replaceWith(nextButton.cloneNode(true)); 
+            // nextButton = document.querySelector(".next-button"); 
+            // nextButton.addEventListener("click", () => {
+            //     qIndex++;
+            //     qstnShow();
+
+            NextButton();
     })
 
-        });
+        ;
         return;
     }
     
   
-    currQstn.innerHTML = `<h1>${qstns[qIndex].question}</h1>
+    currQstn.innerHTML = `<h1>${qIndex+1}. ${qstns[qIndex].question}</h1>
             <div class="answers">
                 <button class="ans">${qstns[qIndex].ans.opt1}</button>
                 <button class="ans">${qstns[qIndex].ans.opt2}</button>
@@ -111,7 +133,9 @@ function qstnShow(){
                 ansButton.style.borderColor = "green";  
                 ansButton.style.borderWidth = "3px"; 
                 ansButton.style.borderStyle = "solid";
-                scorePer=(score/(qstns.length))*100;
+                ansButton.style.backgroundColor = "#9ce69c";
+
+                // scorePer=(score/(qstns.length))*100;
                 
             }
             else{
@@ -119,6 +143,7 @@ function qstnShow(){
                 ansButton.style.borderColor = "red";  
                 ansButton.style.borderWidth = "3px"; 
                 ansButton.style.borderStyle = "solid";
+                ansButton.style.backgroundColor = "#ffcccc";
                 
             }
 
@@ -126,11 +151,14 @@ function qstnShow(){
     })
 }
 
-qstnShow();
-
-let nextButton=document.querySelector(".next-button")
-nextButton.addEventListener("click", () => {
+function NextButton(){
+    let nextButton=document.querySelector(".next-button")
+    nextButton.addEventListener("click", () => {
     qIndex++;
     qstnShow();
-});
+    });
+
+    
+};
+NextButton();
 

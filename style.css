@@ -5,21 +5,23 @@
 }
 
 body{
-    background-color: red;
+    background-color: #eef6f8;
 }
 
 .container{
-    background-color: gray;
+    background-color: #B9D7EA;
     width: 90%;
     max-width: 600px;
     margin: 100px auto;
     border-radius: 10px;
     padding: 30px;
+    color: #555558;
 }
 
 .quiz-head{
     padding-bottom: 30px;
     border-bottom: 1px solid #000000;
+    text-align: center;
 }
 
 .quiz{
@@ -27,26 +29,28 @@ body{
 }
 
 .quiz h1{
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
+
 .ans{
-    background: white;
-    color: black;
+    background: rgba(234, 243, 248, 0.753);
+    
     width: 100%;
-    border: 1px solid blue;
+    border: 1px solid rgba(84, 152, 255, 0.812);
     padding: 10px;
     margin: 10px 0;
     text-align: left;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s;
+    color: rgb(98, 99, 99);
 }
 .ans:hover{
-    background: black;
+    background: rgb(121, 150, 246);
     color: white;
 }
-.next-button{
-    background: green;
+.bt{
+    background: #769FCD;
     color: white;
     width: 100px;
     border: 0;
@@ -64,13 +68,13 @@ body{
     justify-content: center;
     background-color: rgb(83, 235, 235);
     row-gap: 15px;
+    color: #555558;
 }
 .circular{
     
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
     border-radius: 50%;
-    z-index: 1;
    
     display: flex;
     align-items: center;
@@ -80,8 +84,8 @@ body{
 .circular::before{
     content: "";
     position: absolute;
-    height: 210px;
-    width: 210px;
+    height: 170px;
+    width: 170px;
     border-radius: 50%;
     background-color: rgb(255, 255, 255);
 
@@ -91,4 +95,20 @@ body{
     position: relative;
     font-size: 50px;
     font-weight: 600;
+    color: #555558;
 }
+
+.text{
+    font-size: 20px;
+}
+.start{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+.start-instruction{
+    padding: 20px;
+    text-align: center;
+}
+
